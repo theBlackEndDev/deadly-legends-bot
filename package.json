@@ -1,7 +1,7 @@
 {
-  "name": "guidebot",
-  "version": "2.3.6",
-  "description": "A boilerplate example bot with command handler and reloadable commands. Updated and Maintained by the Idiot's Guide Community",
+  "name": "deadly-legends",
+  "version": "1.0.1",
+  "description": "A bot for the Deadly Legends clan on KoH",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -12,17 +12,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/An-Idiots-Guide/guidebot.git"
+    "url": "git+https://github.com/BecomingCoder/deadly-legends-bot"
   },
-  "author": "Evelyne Lachance <eslachance@gmail.com> (http://evie.codes)",
+  "author": "Jason Scott <jay@theblackenddev.com> (http://TheBlackEndDev.com)",
   "contributors": [
     "York (http://anidiots.guide)"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/An-Idiots-Guide/guidebot/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/An-Idiots-Guide/guidebot#readme",
+  "homepage": "https://github.com/BecomingCoder/deadly-legends-bot#readme",
   "dependencies": {
     "better-sqlite3": "^5.4.0",
     "chalk": "^2.4.2",

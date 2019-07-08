@@ -1,43 +1,43 @@
+const moment = require("moment");
+require("moment-duration-format");
+
+
 exports.run = async (client, message, [coords, rss, ...args], level) => { // eslint-disable-line no-unused-vars
+    let time_left = calculateRssTime(rss);
+    const duration = moment.duration(time_left).format(" H [hrs], m [mins]");
+    const hit_time = moment.duration(calculateHitTime(time_left)).format(" H [hrs], m [mins]");
+    let hit_timer = calculateHitTime(time_left);
     let regex = /^\d{3},\d{3}$/;
     let results = regex.test(coords);
     let drags = args.join(' ');
-    let time = calculateRssTime(rss);
-    console.log(time);
-    let real_time = convertMS(time);
 
     if (!results)
-        message.channel.send("Please input valid coordinates. Example ~node 525,654 125000");
+        return message.channel.send("Please input valid coordinates. Example ~node 525,654 125000");
 
     if (rss==null || isNaN(rss))
-        message.channel.send("Usage: ~node [coords] [rss in numbers]");
+       return message.channel.send("Usage: ~node [coords] [rss in numbers]");
     else
-        message.channel.send(`Pop that node in ${real_time.minute} minutes`);
+
+        message.channel.send(`= Clap-A-Node Reminder =
+• Node Location  :: ${coords}
+• When To Clap   :: ${duration}
+• What To Do     :: Kick back and relax....I'll remind you`, {code: "asciidoc"});
         setTimeout(function() {
-            message.reply(`Pop that node in ${real_time.minute} minutes`);
-        }, time*1);
+            message.channel.send(`= Clap-A-Node Reminder =
+• Node Location  :: ${coords}
+• When To Clap   :: Bout 10 mins`, {code: "asciidoc"});
+            message.reply(`You may want to hit that 🌚`)
+        }, hit_timer*1);
 
 
     function calculateRssTime(rss) {
         return (rss / 33.333) * 1000;
     }
 
-    function convertMS( milliseconds ) {
-        let day, hour, minute, seconds;
-        seconds = Math.floor(milliseconds / 1000);
-        minute = Math.floor(seconds / 60);
-        seconds = seconds % 60;
-        hour = Math.floor(minute / 60);
-        minute = minute % 60;
-        day = Math.floor(hour / 24);
-        hour = hour % 24;
-        return {
-            day: day,
-            hour: hour,
-            minute: minute,
-            seconds: seconds
-        };
+    function calculateHitTime(time_left) {
+        return time_left - 600000;
     }
+
 };
 
 exports.conf = {
