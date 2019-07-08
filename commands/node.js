@@ -3,6 +3,7 @@ exports.run = async (client, message, [coords, rss, ...args], level) => { // esl
     let results = regex.test(coords);
     let drags = args.join(' ');
     let time = calculateRssTime(rss);
+    console.log(time);
     let real_time = convertMS(time);
 
     if (!results)
@@ -11,7 +12,7 @@ exports.run = async (client, message, [coords, rss, ...args], level) => { // esl
     if (rss==null || isNaN(rss))
         message.channel.send("Usage: ~node [coords] [rss in numbers]");
     else
-        message.reply(`Pop that node in ${real_time.minute} minutes`);
+        message.channel.send(`Pop that node in ${real_time.minute} minutes`);
         setTimeout(function() {
             message.reply(`Pop that node in ${real_time.minute} minutes`);
         }, time*1);
