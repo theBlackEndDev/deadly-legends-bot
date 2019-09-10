@@ -9,8 +9,9 @@ exports.run = async (client, message, [coords, rss, ...args], level) => { // esl
     let hit_timer = calculateHitTime(time_left);
     let regex = /^\d{3},\d{3}$/;
     let results = regex.test(coords);
+    /* Use for future arguments for dragons
     let drags = args.join(' ');
-
+    */
     if (!results)
         return message.channel.send("Please input valid coordinates. Example ~node 525,654 125000");
 
